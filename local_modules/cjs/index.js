@@ -4,7 +4,6 @@ const capitalize = require("./utils/strings");
 console.log(math.add(2, 3));
 console.log(math.multiply(4, 5));
 console.log(math.subtract(7, 4));
-
 console.log(capitalize("hello"));
 
 console.log(require.cache);

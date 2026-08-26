@@ -7,7 +7,7 @@ function  sanitizeName(name) {
     const cleanBase = base
     .trim()
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-') //sarqi gcik
+    .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
     return cleanBase + cleanExt;

@@ -12,11 +12,34 @@ function  sanitizeName(name) {
 
     return cleanBase + cleanExt;
 }
-const inputPath = process.argv[2];
 
 
-console.log(sanitizeName('My Photo (final) FINAL.JPG'));
-console.log(sanitizeName('report--2024.PDF'));
-console.log(sanitizeName('weird_spacing .txt'));
-console.log(sanitizeName('archive.tar.GZ'));
-console.log(sanitizeName('noext_file'));
+async function organizeFiles(inputDir, outputDir) {
+    await fs.mkdir(outputDir, { recursive: true });
+
+    const files = await fs.readdir(inputDir, { withFileTypes: true });
+
+    for (const file of files) {
+        if (!file.isFile()) {
+            continue;
+        }
+
+        const oldPath = path.join(inputDir, file.name);
+        const newName = sanitizeName(file.name);
+        const newPath = path.join(outputDir, newName);
+
+        await fs.copyFile(oldPath, newPath);
+
+        console.log(`${file.name} -> ${newName}`);
+    }
+}
+
+const inputDir = process.argv[2];
+const outputDir = process.argv[3];
+
+if (!inputDir || !outputDir) {
+    console.log('Usage: node sanitize.js <input-folder> <output-folder>');
+    process.exit(1);
+}
+
+organizeFiles(inputDir, outputDir);

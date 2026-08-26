@@ -1,3 +1,4 @@
+const fs = require('node:fs/promises');
 const path = require('node:path');
 
 function  sanitizeName(name) {
@@ -29,7 +30,6 @@ async function organizeFiles(inputDir, outputDir) {
         const newPath = path.join(outputDir, newName);
 
         await fs.copyFile(oldPath, newPath);
-
         console.log(`${file.name} -> ${newName}`);
     }
 }
@@ -41,5 +41,4 @@ if (!inputDir || !outputDir) {
     console.log('Usage: node sanitize.js <input-folder> <output-folder>');
     process.exit(1);
 }
-
 organizeFiles(inputDir, outputDir);

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone",
+    "price": 1000,
+    "category": "electronics",
+    "stock": 20
+  },
+  {
+    "id": 2,
+    "name": "Laptop",
+    "price": 1500,
+    "category": "electronics",
+    "stock": 25
+  },
+  {
+    "id": 3,
+    "name": "Headphones",
+    "price": 100,
+    "category": "electronics",
+    "stock": 18
+  },
+  {
+    "id": 4,
+    "name": "T-Shirt",
+    "price": 30,
+    "category": "clothing",
+    "stock": 15
+  },
+  {
+    "id": 5,
+    "name": "Sneakers",
+    "price": 80,
+    "category": "clothing",
+    "stock": 8
+  }
+]

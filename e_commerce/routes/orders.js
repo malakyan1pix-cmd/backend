@@ -77,7 +77,7 @@ router.post('/', authenticate, async (req, res) => {
     const orders = await readData('orders.json');
 
     const newOrder = {
-        id: Math.max(...orders.map(p => p.id)) + 1,
+        id: orders.length ? Math.max(...orders.map(o => o.id)) + 1 : 1,
         userId: req.user.id,
         items: orderItems,
         total,

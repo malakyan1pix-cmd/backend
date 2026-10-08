@@ -1,6 +1,7 @@
 const express = require('express');
 const { readData, writeData } = require('../utils/fileDB');
 const { authenticate, authorize } = require('../middleware/auth');
+const validateProduct = require('../utils/validateProduct');
 
 const router = express.Router();
 
@@ -34,24 +35,13 @@ router.get('/:id', async(req, res) => {
 router.post('/', authenticate, authorize('admin'), async (req, res) => {
     const { name, price, category, stock } = req.body;
 
-    if (!name || !price) {
+    const validationError = validateProduct({ name, price, stock });
+
+    if (validationError) {
         return res
         .status(400)
-        .json({ error: 'Name and price are required' });
+        .json({ error: validationError });
     }
-
-    if (!Number.isFinite(price) || price <= 0) {
-        return res
-        .status(400)
-        .json({ error: 'Price must be a positive number' });
-    }
-
-    if (!Number.isInteger(stock) || stock < 0) {
-        return res
-        .status(400)
-        .json({ error: 'Stock must be a non-negative integer' });
-    }
-
 
     const products = await readData('products.json');
 
@@ -82,9 +72,22 @@ router.put('/:id', authenticate, authorize('admin'), async (req, res) => {
         .json({ error: 'Product not found' });
     }
 
+    const { name, price, category, stock } = req.body;
+
+    const validationError = validateProduct({ name, price, stock });
+
+    if (validationError) {
+        return res 
+        .status(400)
+        .json({ error: validationError });
+    }
+
     products[index] = {
-        ...req.body, 
-        id: products[index].id
+       id: products[index].id,
+       name,
+       price,
+       category: category || 'other',
+       stock
     };
 
     await writeData('products.json', products);

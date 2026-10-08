@@ -2,10 +2,9 @@ const express = require('express');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const { readData, writeData } = require('../utils/fileDB');
+const { SECRET } = require('../utils/config');
 
 const router = express.Router();
-
-const SECRET = process.env.SECRET || 'something';
 
 router.post('/register', async (req, res) => {
     const { username, password} = req.body;

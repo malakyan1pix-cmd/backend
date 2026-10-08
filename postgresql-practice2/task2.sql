@@ -8,7 +8,6 @@ CREATE TABLE books (
     published_on date NOT NULL
 );
 
-
 -- Check table structure: \d books
 --                               Table "public.books"
 --    Column    |     Type     | Collation | Nullable |           Default            

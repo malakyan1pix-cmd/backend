@@ -14,7 +14,6 @@ EXCLUDE USING gist (
     during WITH &&
 );
 
-
 INSERT INTO book_signings (author_id, store_location, during)
 VALUES (1, 'Bookstore Central', '[2026-03-01 14:00:00+04, 2026-03-01 16:00:00+04)');
 -- Result: INSERT 0 1

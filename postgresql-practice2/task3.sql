@@ -31,4 +31,3 @@ ON books USING btree (published_on);
 -- Note:
 -- PostgreSQL uses a Sequential Scan because the books table is very small.
 -- An Index Scan is not necessary for only a few rows.
-

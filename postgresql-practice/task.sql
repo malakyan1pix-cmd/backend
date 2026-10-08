@@ -75,7 +75,6 @@ WHERE in_stock = true;
 -- Check roles:
 -- \du
 
-
 -- Task 6: Grant a Limited Privilege
 
 GRANT SELECT ON TABLE books TO library_staff;

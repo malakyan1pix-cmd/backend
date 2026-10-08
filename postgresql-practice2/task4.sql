@@ -25,7 +25,6 @@ ON books USING GIN (tags);
 --FROM books WHERE tags @> ARRAY['fiction'];
 
 
-
 --                                                        QUERY PLAN                                                         
 -----------------------------------------------------------------------------------------------------------------------------
 -- Bitmap Heap Scan on books  (cost=8.52..12.53 rows=1 width=32) (actual time=0.024..0.025 rows=5 loops=1)

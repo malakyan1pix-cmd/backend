@@ -6,7 +6,6 @@ CREATE TABLE authors (
     joined_at timestamptz NOT NULL DEFAULT now()
 );
 
-
 -- Check table structure: \d authors
 --                                   Table "public.authors"
 --  Column   |           Type           | Collation | Nullable |           Default

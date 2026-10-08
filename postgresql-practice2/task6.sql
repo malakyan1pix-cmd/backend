@@ -34,7 +34,6 @@ CHECK (website IS NULL OR website LIKE 'https://%');
 --    TABLE "books" CONSTRAINT "books_author_id_fkey" FOREIGN KEY (author_id) REFERENCES authors(author_id)
 
 
-
 --INSERT INTO authors (full_name, email, website)
 --VALUES ('Test Author', 'test@example.com', 'http://insecure.example.com');
 
